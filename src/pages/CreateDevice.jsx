@@ -3,8 +3,8 @@ import Sidebar from '../partials/Sidebar';
 import Header from '../partials/Header';
 import Alert from '../partials/actions/Alert';
 import { useAuth } from '../hooks/useAuth';
-import { addDeviceAPI, getUsersAPI } from '../utils/http';
 import { useNavigate } from 'react-router-dom';
+import { addDeviceAPI, getUsersAPI } from '../utils/http';
 
 const CreateDevice = () => {
   const { token } = useAuth();

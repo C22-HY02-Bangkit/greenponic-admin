@@ -4,7 +4,6 @@ import Header from '../partials/Header';
 import Alert from '../partials/actions/Alert';
 import { useAuth } from '../hooks/useAuth';
 import {
-  addDeviceAPI,
   editDeviceAPI,
   getDeviceDetailAPI,
   getUsersAPI,
@@ -18,7 +17,7 @@ const EditDevice = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [users, setUsers] = useState([]);
   const [error, setError] = useState('');
-  const [data, setData] = useState();
+  const [data, setData] = useState(null);
 
   const submitHandler = async (e) => {
     e.preventDefault();

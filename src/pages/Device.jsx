@@ -57,6 +57,8 @@ const Device = () => {
   const deleteHandler = (id) => async (e) => {
     e.preventDefault();
 
+    if (!confirm('Are sure?')) return;
+
     await deleteDeviceAPI(token, id);
 
     alert('Delete device success!');

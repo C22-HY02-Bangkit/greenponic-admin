@@ -8,11 +8,11 @@ const Axios = axios.create({
   ResponseType: 'json',
 });
 
-// auth-api
+// ================ auth-api ================
 export const loginAPI = async (data) =>
   await Axios.post('/auth/login', data).then((res) => res.data);
 
-// device-api
+// ================ device-api ================
 export const getDevicesAPI = async (token) =>
   await Axios.get('/devices', {
     headers: { authorization: `Bearer ${token}` },
@@ -38,20 +38,65 @@ export const deleteDeviceAPI = async (token, id) =>
     headers: { authorization: `Bearer ${token}` },
   });
 
-// user-api
+// ================ user-api ================
 export const getUsersAPI = async (token) =>
   await Axios.get('/users', {
     headers: { authorization: `Bearer ${token}` },
   }).then((res) => res.data?.data);
 
-// product-api
+export const getUserDetailAPI = async (token, id) =>
+  await Axios.get(`/users/${id}`, {
+    headers: { authorization: `Bearer ${token}` },
+  }).then((res) => res.data?.data);
+
+// ================ product-api ================
 export const getProductsAPI = async (token) =>
   await Axios.get('/products', {
     headers: { authorization: `Bearer ${token}` },
   }).then((res) => res.data?.data);
 
-// plant-api
+export const getProductDetailAPI = async (token, id) =>
+  await Axios.get(`/products/${id}`, {
+    headers: { authorization: `Bearer ${token}` },
+  }).then((res) => res.data?.data);
+
+export const addProductAPI = async (token, data) =>
+  await Axios.post('/products', data, {
+    headers: { authorization: `Bearer ${token}` },
+  });
+
+export const editProductAPI = async (token, data, id) =>
+  await Axios.put(`/products/${id}`, data, {
+    headers: { authorization: `Bearer ${token}` },
+  });
+
+export const deleteProductAPI = async (token, id) =>
+  await Axios.delete(`/products/${id}`, {
+    headers: { authorization: `Bearer ${token}` },
+  });
+
+// ================ plant-api ================
 export const getPlantsAPI = async (token) =>
   await Axios.get('/plants', {
     headers: { authorization: `Bearer ${token}` },
   }).then((res) => res.data?.data);
+
+export const getPlantDetailAPI = async (token, id) =>
+  await Axios.get(`/plants/${id}`, {
+    headers: { authorization: `Bearer ${token}` },
+  }).then((res) => res.data?.data);
+
+export const addPlantAPI = async (token, data) =>
+  await Axios.post('/plants', data, {
+    headers: { authorization: `Bearer ${token}` },
+  });
+
+export const editPlantAPI = async (token, data, id) =>
+  await Axios.put(`/plants/${id}`, data, {
+    headers: { authorization: `Bearer ${token}` },
+  });
+
+export const deletePlantAPI = async (token, id) =>
+  await Axios.delete(`/plants/${id}`, {
+    headers: { authorization: `Bearer ${token}` },
+  });
