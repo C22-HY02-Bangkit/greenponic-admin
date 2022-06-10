@@ -4,7 +4,7 @@ import Sidebar from '../partials/Sidebar';
 import Header from '../partials/Header';
 import DataTable from 'react-data-table-component';
 import { useAuth } from '../hooks/useAuth';
-import { getPlantsAPI } from '../utils/http';
+import { deletePlantAPI, getPlantsAPI } from '../utils/http';
 
 const Plant = () => {
   const { token } = useAuth();
@@ -37,8 +37,15 @@ const Plant = () => {
     },
   ];
 
-  const deleteHandler = (e) => (id) => {
-    console.log('[deleteHandler]', id);
+  const deleteHandler = (id) => async (e) => {
+    e.preventDefault();
+
+    if (!confirm('Are sure?')) return;
+
+    await deletePlantAPI(token, id);
+
+    alert('Delete Plant success!');
+    window.location.reload();
   };
 
   useEffect(() => {

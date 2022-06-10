@@ -37,7 +37,6 @@ const EditProduct = () => {
   useEffect(() => {
     const http = async () => {
       const product = await getProductDetailAPI(token, id);
-      console.log('[product]', product);
       setData(product);
     };
 
