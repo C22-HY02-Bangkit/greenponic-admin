@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Sidebar from '../partials/Sidebar';
 import Header from '../partials/Header';
 import DataTable from 'react-data-table-component';
 import { useAuth } from '../hooks/useAuth';
-import { getDevicesAPI } from '../utils/http';
+import { deleteDeviceAPI, getDevicesAPI } from '../utils/http';
 
 const Device = () => {
   const { token } = useAuth();
@@ -32,18 +33,14 @@ const Device = () => {
       selector: (row) =>
         row?.planted?.name || <div className="text-gray-400">Empty</div>,
     },
-
     {
       cell: (row) => (
         <>
+          <Link to={`/device/edit/${row.id}`}>
+            <button className="text-green-500 border p-2 ">edit</button>
+          </Link>
           <button
-            className="text-green-500 border p-2 mr-1"
-            onClick={editHandler(row.id)}
-          >
-            edit
-          </button>
-          <button
-            className="text-red-500 border p-2"
+            className="text-red-500 border p-2 ml-1"
             onClick={deleteHandler(row.id)}
           >
             delete
@@ -57,16 +54,13 @@ const Device = () => {
     },
   ];
 
-  const editHandler = (e) => (id) => {
+  const deleteHandler = (id) => async (e) => {
     e.preventDefault();
 
-    console.log('[editHandler]', id);
-  };
+    await deleteDeviceAPI(token, id);
 
-  const deleteHandler = (e) => (id) => {
-    e.preventDefault();
-
-    console.log('[deleteHandler]', id);
+    alert('Delete device success!');
+    window.location.reload();
   };
 
   useEffect(() => {
@@ -93,14 +87,16 @@ const Device = () => {
             {/* main content */}
             {/* <h1 className='text-4xl text-gray-800 mb-3 text-center font-bold'>Device</h1> */}
             <DataTable
-              title="Device"
-              actions={
-                <button className="font-semibold text-gray-500 p-2 border text-sm">
-                  ADD
-                </button>
-              }
+              title="Devices"
               columns={columns}
               data={data}
+              actions={
+                <Link to="/device/create">
+                  <button className="font-semibold text-gray-500 p-2 border text-sm">
+                    ADD
+                  </button>
+                </Link>
+              }
             />
           </div>
         </main>

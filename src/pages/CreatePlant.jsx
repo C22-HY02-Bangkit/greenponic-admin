@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import Sidebar from '../partials/Sidebar';
 import Header from '../partials/Header';
-import WelcomeBanner from '../partials/dashboard/WelcomeBanner';
 
-function Dashboard() {
+const CreatePlant = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
@@ -18,13 +17,12 @@ function Dashboard() {
 
         <main>
           <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
-            {/* Welcome banner */}
-            <WelcomeBanner />
+              <h1>Create Plant</h1>
           </div>
         </main>
       </div>
     </div>
   );
-}
+};
 
-export default Dashboard;
+export default CreatePlant;
