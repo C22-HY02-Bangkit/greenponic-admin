@@ -1,3 +1,4 @@
+// prettier-ignore
 import axios from 'axios';
 
 const Axios = axios.create({
@@ -8,5 +9,18 @@ const Axios = axios.create({
   ResponseType: 'json',
 });
 
+// auth-api
 export const loginAPI = async (data) =>
   await Axios.post('/auth/login', data).then((res) => res.data);
+
+// device-api
+export const getDevicesAPI = async (token) =>
+  await Axios.get('/devices', {
+    headers: { authorization: `Bearer ${token}` },
+  }).then((res) => res.data?.data);
+
+// user-api
+
+// product-api
+
+// plant-api
