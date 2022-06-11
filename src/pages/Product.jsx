@@ -28,10 +28,10 @@ const Product = () => {
       cell: (row) => (
         <>
           <Link to={`/product/edit/${row.id}`}>
-            <button className="text-green-500 border p-2 ">edit</button>
+            <button className="text-green-500 border p-2 mx-1">edit</button>
           </Link>
           <button
-            className="text-red-500 border p-2 ml-1"
+            className="text-red-500 border p-2"
             onClick={deleteHandler(row.id)}
           >
             delete

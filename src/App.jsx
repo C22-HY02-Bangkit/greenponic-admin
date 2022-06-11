@@ -22,6 +22,7 @@ import CreatePlant from './pages/CreatePlant';
 import EditPlant from './pages/EditPlant';
 import CreateProduct from './pages/CreateProduct';
 import EditProduct from './pages/EditProduct';
+import UserDetail from './pages/UserDetail';
 
 function App() {
   const location = useLocation();
@@ -57,6 +58,7 @@ function App() {
 
           {/* user route */}
           <Route exact path="/user" element={<User />} />
+          <Route exact path="/user/detail/:id" element={<UserDetail />} />
         </Route>
       </Routes>
     </>

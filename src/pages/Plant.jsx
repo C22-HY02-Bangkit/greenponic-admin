@@ -19,11 +19,14 @@ const Plant = () => {
     {
       cell: (row) => (
         <>
+          <Link to={`/plant/detail/${row.id}`}>
+            <button className="text-blue-600 border p-2 ">detail</button>
+          </Link>
           <Link to={`/plant/edit/${row.id}`}>
-            <button className="text-green-500 border p-2 ">edit</button>
+            <button className="text-green-500 border p-2 mx-1">edit</button>
           </Link>
           <button
-            className="text-red-500 border p-2 ml-1"
+            className="text-red-500 border p-2"
             onClick={deleteHandler(row.id)}
           >
             delete
@@ -33,7 +36,7 @@ const Plant = () => {
       ignoreRowClick: true,
       allowOverflow: true,
       button: true,
-      width: '150px',
+      width: '200px',
     },
   ];
 
