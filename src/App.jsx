@@ -23,6 +23,7 @@ import EditPlant from './pages/EditPlant';
 import CreateProduct from './pages/CreateProduct';
 import EditProduct from './pages/EditProduct';
 import UserDetail from './pages/UserDetail';
+import PlantDetail from './pages/PlantDetail';
 
 function App() {
   const location = useLocation();
@@ -48,6 +49,7 @@ function App() {
 
           {/* plant route */}
           <Route exact path="/plant" element={<Plant />} />
+          <Route exact path="/plant/detail/:id" element={<PlantDetail />} />
           <Route exact path="/plant/create" element={<CreatePlant />} />
           <Route exact path="/plant/edit/:id" element={<EditPlant />} />
 
