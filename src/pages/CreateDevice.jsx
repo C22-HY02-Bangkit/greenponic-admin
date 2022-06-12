@@ -4,13 +4,14 @@ import Header from '../partials/Header';
 import Alert from '../partials/actions/Alert';
 import { useAuth } from '../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
-import { addDeviceAPI, getUsersAPI } from '../utils/http';
+import { addDeviceAPI, getProductsAPI, getUsersAPI } from '../utils/http';
 
 const CreateDevice = () => {
   const { token } = useAuth();
   const navigate = useNavigate();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [users, setUsers] = useState([]);
+  const [products, setproducts] = useState([]);
   const [error, setError] = useState('');
 
   const submitHandler = async (e) => {
@@ -20,16 +21,14 @@ const CreateDevice = () => {
       const form = new FormData(e.currentTarget);
 
       const data = {
-        name: form.get('name'),
-        code: form.get('code'),
-        user_id: form.get('user'),
+        user_id: form.get('user_id'),
+        product_id: form.get('product_id'),
       };
+      console.log(data);
 
       await addDeviceAPI(token, data);
-
       navigate('/device');
     } catch (error) {
-      // console.log('error', error.response.data);
       setError(error.response.data?.message);
     }
   };
@@ -37,6 +36,9 @@ const CreateDevice = () => {
   useEffect(() => {
     const http = async () => {
       const users = await getUsersAPI(token);
+      const products = await getProductsAPI(token);
+
+      setproducts(products);
       setUsers(users);
     };
 
@@ -62,31 +64,22 @@ const CreateDevice = () => {
                 <div className="mb-4">{error && <Alert>{error}</Alert>}</div>
 
                 <div className="relative w-full">
-                  <label htmlFor="required-name" className="text-gray-700">
-                    Device Name
-                    <span className="text-red-500 required-dot">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    id="required-name"
-                    className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-400 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-transparent"
-                    name="name"
-                    placeholder="Device Name"
-                  />
-                </div>
+                  <label className="text-gray-700" htmlFor="user">
+                    Product
+                    <select
+                      id="user"
+                      className="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
+                      name="product_id"
+                    >
+                      <option value="">Select product</option>
 
-                <div className="relative w-full">
-                  <label htmlFor="required-code" className="text-gray-700">
-                    Device Code
-                    <span className="text-red-500 required-dot">*</span>
+                      {products.map((product) => (
+                        <option key={product.id} value={product.id}>
+                          {product.title} - {product.description}
+                        </option>
+                      ))}
+                    </select>
                   </label>
-                  <input
-                    type="text"
-                    id="required-code"
-                    className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-400 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-transparent"
-                    name="code"
-                    placeholder="Device Code"
-                  />
                 </div>
 
                 <div className="relative w-full">
@@ -95,13 +88,13 @@ const CreateDevice = () => {
                     <select
                       id="user"
                       className="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
-                      name="user"
+                      name="user_id"
                     >
                       <option value="">Select User</option>
 
                       {users.map((user) => (
                         <option key={user.id} value={user.id}>
-                          {user.email}
+                          {user.fullname} - {user.email}
                         </option>
                       ))}
                     </select>

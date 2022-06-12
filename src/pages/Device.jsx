@@ -13,12 +13,8 @@ const Device = () => {
 
   const columns = [
     {
-      name: 'Device Code',
-      selector: (row) => row.code,
-    },
-    {
       name: 'Device Name',
-      selector: (row) => row.name,
+      selector: (row) => row?.product?.title,
     },
     {
       name: 'User Name',
@@ -68,6 +64,7 @@ const Device = () => {
   useEffect(() => {
     const http = async () => {
       const devices = await getDevicesAPI(token);
+      console.log(devices);
       setData(devices);
     };
 
