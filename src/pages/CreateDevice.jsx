@@ -24,7 +24,6 @@ const CreateDevice = () => {
         user_id: form.get('user_id'),
         product_id: form.get('product_id'),
       };
-      console.log(data);
 
       await addDeviceAPI(token, data);
       navigate('/device');

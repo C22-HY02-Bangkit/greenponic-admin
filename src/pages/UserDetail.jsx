@@ -14,7 +14,6 @@ const UserDetail = () => {
   useEffect(() => {
     const http = async () => {
       const user = await getUserDetailAPI(token, id);
-      console.log(user);
       setData(user);
     };
 

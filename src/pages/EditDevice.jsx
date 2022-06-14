@@ -32,13 +32,11 @@ const EditDevice = () => {
         user_id: form.get('user_id'),
       };
 
-      console.log(data);
 
       await editDeviceAPI(token, data, id);
 
       navigate('/device');
     } catch (error) {
-      // console.log('error', error.response.data);
       setError(error.response.data?.message);
     }
   };
@@ -61,7 +59,6 @@ const EditDevice = () => {
     http();
   }, []);
 
-  console.log('[editDevice]', data?.product_id, data?.user_id);
 
   return (
     <div className="flex h-screen overflow-hidden">

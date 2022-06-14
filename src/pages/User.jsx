@@ -55,7 +55,6 @@ const User = () => {
   useEffect(() => {
     const http = async () => {
       const users = await getUsersAPI(token);
-      console.log(users);
       setData(users);
     };
 

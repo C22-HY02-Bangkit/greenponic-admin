@@ -41,7 +41,6 @@ const EditPlant = () => {
   useEffect(() => {
     const http = async () => {
       const plant = await getPlantDetailAPI(token, id);
-      console.log(plant);
       setData(plant);
     };
 
