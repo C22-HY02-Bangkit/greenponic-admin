@@ -97,7 +97,7 @@ const EditDevice = () => {
                           value={product.id}
                           selected={product.id === data?.product_id}
                         >
-                          {product.title} - {product.description}
+                          {product.title}
                         </option>
                       ))}
                     </select>

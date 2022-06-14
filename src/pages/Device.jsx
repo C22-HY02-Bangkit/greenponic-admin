@@ -13,6 +13,11 @@ const Device = () => {
 
   const columns = [
     {
+      name: 'Device ID',
+      selector: (row) => row.id,
+      grow: 2,
+    },
+    {
       name: 'Device Name',
       selector: (row) => row?.product?.title,
     },
@@ -28,6 +33,10 @@ const Device = () => {
       name: 'Plant Name',
       selector: (row) =>
         row?.planted?.name || <div className="text-gray-400">Empty</div>,
+    },
+    {
+      name: 'Date Created',
+      selector: (row) => new Date(row.createdAt).toLocaleDateString('id-ID'),
     },
     {
       cell: (row) => (
@@ -58,7 +67,10 @@ const Device = () => {
     await deleteDeviceAPI(token, id);
 
     alert('Delete device success!');
-    window.location.reload();
+
+    // get updated device
+    const devices = await getDevicesAPI(token);
+    setData(devices);
   };
 
   useEffect(() => {
