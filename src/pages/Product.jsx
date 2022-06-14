@@ -17,13 +17,10 @@ const Product = () => {
       selector: (row) => row.title,
     },
     {
-      name: 'Description',
-      selector: (row) => row.description,
+      name: 'Date Created',
+      selector: (row) => new Date(row.createdAt).toLocaleDateString('id-ID'),
     },
-    {
-      name: 'Price',
-      selector: (row) => 'Rp. ' + row.price,
-    },
+    
     {
       cell: (row) => (
         <>
@@ -59,7 +56,6 @@ const Product = () => {
   useEffect(() => {
     const http = async () => {
       const products = await getProductsAPI(token);
-      console.log(products);
       setData(products);
     };
 

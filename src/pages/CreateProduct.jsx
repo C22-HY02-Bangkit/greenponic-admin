@@ -20,8 +20,6 @@ const CreateProduct = () => {
 
       const data = {
         title: form.get('title'),
-        description: form.get('description'),
-        price: form.get('price'),
       };
 
       await addProductAPI(token, data);
@@ -61,37 +59,6 @@ const CreateProduct = () => {
                     className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-400 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-transparent"
                     name="title"
                     placeholder="Product Name"
-                  />
-                </div>
-
-                <div className="relative w-full">
-                  <label
-                    htmlFor="required-description"
-                    className="text-gray-700"
-                  >
-                    Description
-                    <span className="text-red-500 required-dot">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    id="required-description"
-                    className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-400 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-transparent"
-                    name="description"
-                    placeholder="Description"
-                  />
-                </div>
-
-                <div className="relative w-full">
-                  <label htmlFor="required-price" className="text-gray-700">
-                    Price
-                    <span className="text-red-500 required-dot">*</span>
-                  </label>
-                  <input
-                    type="number"
-                    id="required-price"
-                    className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-400 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-transparent"
-                    name="price"
-                    placeholder="Price"
                   />
                 </div>
 

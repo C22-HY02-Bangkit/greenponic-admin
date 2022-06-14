@@ -76,7 +76,6 @@ const Device = () => {
   useEffect(() => {
     const http = async () => {
       const devices = await getDevicesAPI(token);
-      console.log(devices);
       setData(devices);
     };
 
