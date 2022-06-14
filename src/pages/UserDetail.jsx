@@ -82,7 +82,7 @@ const UserDetail = () => {
                       Province
                     </dt>
                     <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                      {data?.detail?.province || '-'}
+                      {data?.detail?.province?.name || '-'}
                     </dd>
                   </div>
                   <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -129,7 +129,7 @@ const UserDetail = () => {
                         <tr key={device.id}>
                           <td className="px-5 py-5 border-b  text-sm">
                             <p className="text-gray-900 whitespace-no-wrap">
-                              {device.name}
+                              {device?.product?.title}
                             </p>
                           </td>
                           <td className="px-5 py-5 border-b  text-sm">

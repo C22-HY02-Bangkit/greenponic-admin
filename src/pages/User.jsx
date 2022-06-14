@@ -22,25 +22,29 @@ const User = () => {
     },
     {
       name: 'Phone Number',
-      selector: (row) => row.phone_number || <div className="text-gray-400">Empty</div>,
+      selector: (row) =>
+        row?.detail?.phone_number || <div className="text-gray-400">-</div>,
     },
     {
       name: 'Province',
-      selector: (row) => row.province || <div className="text-gray-400">Empty</div>,
+      selector: (row) =>
+        row?.detail?.province?.name || <div className="text-gray-400">-</div>,
     },
     {
       name: 'Address',
-      selector: (row) => row.address || <div className="text-gray-400">Empty</div>,
+      selector: (row) =>
+        row?.detail?.address || <div className="text-gray-400">-</div>,
     },
     {
       name: 'Total Devices',
-      selector: (row) => row.total_device || <div className="text-gray-400">0</div>,
+      selector: (row) =>
+        row?.devices.length || <div className="text-gray-400">0</div>,
     },
     {
       cell: (row) => (
-          <Link to={`/user/detail/${row.id}`}>
-            <button className="text-blue-600 border p-2 ">detail</button>
-          </Link>
+        <Link to={`/user/detail/${row.id}`}>
+          <button className="text-blue-600 border p-2 ">detail</button>
+        </Link>
       ),
       ignoreRowClick: true,
       allowOverflow: true,

@@ -71,7 +71,7 @@ const CreateDevice = () => {
                       className="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
                       name="product_id"
                     >
-                      <option disabled>Select product</option>
+                      <option value="">Select product</option>
 
                       {products.map((product) => (
                         <option key={product.id} value={product.id}>
@@ -90,7 +90,7 @@ const CreateDevice = () => {
                       className="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
                       name="user_id"
                     >
-                      <option disabled>Select User</option>
+                      <option value="">Select User</option>
 
                       {users.map((user) => (
                         <option key={user.id} value={user.id}>
