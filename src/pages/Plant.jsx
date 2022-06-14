@@ -47,8 +47,8 @@ const Plant = () => {
 
     await deletePlantAPI(token, id);
 
-    alert('Delete Plant success!');
-    window.location.reload();
+    const plants = await getPlantsAPI(token);
+    setData(plants);
   };
 
   useEffect(() => {

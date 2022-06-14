@@ -20,7 +20,7 @@ const Product = () => {
       name: 'Date Created',
       selector: (row) => new Date(row.createdAt).toLocaleDateString('id-ID'),
     },
-    
+
     {
       cell: (row) => (
         <>
@@ -50,7 +50,9 @@ const Product = () => {
     await deleteProductAPI(token, id);
 
     alert('Delete product success!');
-    window.location.reload();
+
+    const products = await getProductsAPI(token);
+    setData(products);
   };
 
   useEffect(() => {
